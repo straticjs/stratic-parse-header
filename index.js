@@ -15,18 +15,42 @@
 
 'use strict';
 
-var Stream = require('stream');
+var through2 = require('through2');
+var md = require('markdown').markdown;
+var concat = require('concat-stream');
+var gutil = require('gulp-util');
+var _ = require('lodash');
 
-function parseHeader(obj) {
-	var stream = Stream.Transform({objectMode: true});
+// TODO: this is, in general, extremely brittle
 
-	stream._transform = function(file, unused, callback) {
-		file['test'] = 'something';
-		console.log(file);
-		callback(null, file);
-	};
+module.exports = function(data) {
+	return through2.obj(function(file, enc, callback) {
+		var that = this;
+		file.pipe(concat(function(buf) {
+			var tree = md.parse(buf.toString());
+			if (tree[2][2] === 'Post information' &&
+			    tree[4][2] === 'Post text') {
+				// Parse metadata out of the Markdown
+				var arr = tree[3][1].split('"');
+				file.title = arr[1];
+				var time = arr[3].split(' ');
+				file.time = file.time || {};
+				file.time.epoch = time[0];
+				// TODO: should this be further parsed?
+				file.time.utcoffset = time[time.length-1];
+				file.author = arr[5];
+				file.categories = arr[7].split(',').map(_.trim);
 
-	return stream;
+				// Slice the metadata out of the Markdown
+				tree = [tree[0], tree[1]].concat(_.drop(tree, 5));
+
+				// TODO: serialize tree back to Markdown
+
+				that.push(file);
+				callback();
+			} else {
+				throw new gutil.PluginError('stratic-parse-header', 'Stratic Markdown formatting not well-formed');
+			}
+		}));
+	});
 };
-
-module.exports = parseHeader;
