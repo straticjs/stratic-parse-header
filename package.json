@@ -6,8 +6,9 @@
   "dependencies": {
     "concat-stream": "^1.5.1",
     "gulp-util": "^3.0.7",
-    "lodash": "^3.10.1",
-    "markdown": "^0.5.0",
+    "remark": "^4.2.0",
+    "stratic-extract-header": "^1.0.0",
+    "stratic-validate-header": "^1.0.1",
     "through2": "^2.0.0"
   },
   "devDependencies": {
