@@ -23,6 +23,7 @@
     "url": "https://github.com/strugee/stratic-parse-header.git"
   },
   "keywords": [
+    "stratic",
     "gulpplugin"
   ],
   "author": "Alex Jordan <alex@strugee.net>",
