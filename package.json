@@ -1,6 +1,6 @@
 {
   "name": "stratic-parse-header",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Parse a Stratic header and attach it to a Vinyl file object",
   "main": "index.js",
   "dependencies": {
