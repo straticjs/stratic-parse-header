@@ -18,24 +18,25 @@
 var through2 = require('through2');
 var remark = require('remark');
 var concat = require('concat-stream');
-var validateHeader = require('stratic-validate-header');
-var extractHeader = require('stratic-extract-header');
+var validate = require('stratic-validate-header');
+var extract = require('stratic-extract-header');
+var strip = require('stratic-strip-header');
+var _ = require('lodash');
 
 var fileData = {};
-var processor = remark().use(validateHeader).use(extractHeader, {data: fileData}).use(strip);
-
-function strip() {
-	return function(ast, file, next) {
-		
-	};
-};
+var processor = remark().use(validate).use(extract, {data: fileData}).use(strip);
 
 module.exports = function(data) {
 	return through2.obj(function(file, enc, callback) {
 		var that = this;
 		file.pipe(concat(function(buf) {
-			processor.process(buf.toString());
-			console.log(fileData);
+			var doc = processor.process(buf.toString());
+
+			_.merge(file, fileData);
+			file.contents = new Buffer(doc);
+
+			that.push(file);
+			callback();
 		}));
 	});
 };
