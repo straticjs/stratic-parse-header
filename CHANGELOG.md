@@ -2,6 +2,12 @@
 
 `stratic-parse-header` follows [Semantic Versioning][1].
 
+## 1.1.0 - 2016-10-25
+
+### Improved
+
+Upgrade to remark@6
+
 ## 1.0.2 - 2016-05-26
 
 ### Fixed
