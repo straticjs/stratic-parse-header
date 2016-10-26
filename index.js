@@ -33,7 +33,7 @@ module.exports = function(data) {
 			var doc = processor.process(buf.toString());
 
 			_.merge(file, fileData);
-			file.contents = new Buffer(doc);
+			file.contents = new Buffer(doc.contents);
 
 			that.push(file);
 			callback();
