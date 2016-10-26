@@ -7,7 +7,7 @@
     "concat-stream": "^1.5.1",
     "gulp-util": "^3.0.7",
     "lodash": "^4.8.2",
-    "remark": "^5.1.0",
+    "remark": "^6.0.1",
     "stratic-extract-header": "^1.0.0",
     "stratic-strip-header": "^1.0.0",
     "stratic-validate-header": "^1.0.1",
