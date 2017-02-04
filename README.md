@@ -1,5 +1,7 @@
 # `stratic-parse-header`
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/straticjs/stratic-parse-header.svg)](https://greenkeeper.io/)
+
 [Gulp][1] plugin to fully parse and process a standard [Stratic][2] header:
 
 1. Validate the header
