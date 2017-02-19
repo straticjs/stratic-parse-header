@@ -6,24 +6,24 @@
 
 ### Improved
 
-Upgrade to remark@6
+* Upgrade to remark@6
 
 ## 1.0.2 - 2016-05-26
 
 ### Fixed
 
-Add a missing dependency - no code changes.
+* Add a missing dependency - no code changes.
 
 ## 1.0.1 - 2016-04-05
 
 ### Fixed
 
-Correct README formatting - no code changes.
+* Correct README formatting - no code changes.
 
 ## 1.0.0 - 2016-04-05
 
 ### Added
 
-Initial release
+* Initial release
 
  [1]: http://semver.org/
