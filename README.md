@@ -6,6 +6,12 @@
 2. Extract metadata
 3. Strip out the header 
 
+## DEPRECATED
+
+This module is deprecated. It turns out that the Stratic header just isn't expressive enough and is there for no good reason, really.
+
+You should use [gulp-grey-matter](https://www.npmjs.com/package/gulp-gray-matter/) to parse YAML frontmatter instead. Accordingly, this package is unmaintained.
+
 ## Installation
 
     npm install stratic-parse-header
